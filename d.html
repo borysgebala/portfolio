@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moje Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 2rem;
+      text-align: center;
+      background: #161b22;
+      border-bottom: 1px solid #30363d;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #58a6ff;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #8b949e;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: #e6edf3;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #58a6ff;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: #58a6ff;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project {
+      background: #161b22;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid #30363d;
+      transition: transform 0.3s, border 0.3s, opacity 0.8s;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .project.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      border: 1px solid #58a6ff;
+    }
+
+    .project h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #30363d;
+      background: #161b22;
+      color: #8b949e;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #58a6ff;
+      color: #0d1117;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 1rem;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    a.button:hover {
+      background: #1f6feb;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Jan Kowalski</h1>
+    <p>Frontend Developer | Web Designer</p>
+    <nav>
+      <a href="#about">O mnie</a>
+      <a href="#projects">Projekty</a>
+      <a href="#contact">Kontakt</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>O mnie</h2>
+    <p>
+      Hej! Jestem frontend developerem, który uwielbia tworzyć nowoczesne i responsywne strony internetowe.
+      Specjalizuję się w HTML, CSS, JavaScript oraz frameworkach takich jak React.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Moje Projekty</h2>
+    <div class="projects">
+      <div class="project">
+        <h3>Projekt 1</h3>
+        <p>Opis mojego pierwszego projektu. Możesz tu wrzucić link do GitHuba lub demo online.</p>
+        <a href="#" class="button">Zobacz</a>
+      </div>
+      <div class="project">
+        <h3>Projekt 2</h3>
+        <p>Opis drugiego projektu. Strona responsywna z użyciem React.</p>
+        <a href="#" class="button">Zobacz</a>
+      </div>
+      <div class="project">
+        <h3>Projekt 3</h3>
+        <p>Aplikacja webowa pokazująca API i interaktywne elementy.</p>
+        <a href="#" class="button">Zobacz</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Kontakt</h2>
+    <p>
+      Jeśli chcesz się ze mną skontaktować, napisz maila: 
+      <a href="mailto:jan.kowalski@example.com">jan.kowalski@example.com</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>© 2025 Jan Kowalski. Wszelkie prawa zastrzeżone.</p>
+  </footer>
+
+  <script>
+    // Animacje przy scrollu
+    const sections = document.querySelectorAll("section");
+    const projects = document.querySelectorAll(".project");
+
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+
+      sections.forEach(sec => {
+        const secTop = sec.getBoundingClientRect().top;
+        if (secTop < triggerBottom) sec.classList.add("show");
+      });
+
+      projects.forEach(proj => {
+        const projTop = proj.getBoundingClientRect().top;
+        if (projTop < triggerBottom) proj.classList.add("show");
+      });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
+</body>
+</html>
+
